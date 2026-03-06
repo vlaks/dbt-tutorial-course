@@ -1,8 +1,17 @@
 version: 2
 
+groups:
+  - name: sales
+    owner:
+      email: sales@my-company.com
+
 models:
   - name: dim_orders
     description: "Table of order level information"
+    config:
+      group: sales
+    access: protected
+    
     columns:
 
     # Columns from stg_ecommerce__orders
@@ -32,7 +41,7 @@ models:
         description: "When the order was shipped"
 
       - name: order_status
-
+        description: "{{ doc('status') }}"
 
       - name: num_items_ordered
         description: "Number of items in the order"
